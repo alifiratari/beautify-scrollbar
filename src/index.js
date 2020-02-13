@@ -120,7 +120,7 @@ export default class BeautifyScrollBar {
 
                 this.yThumb = createDiv('beautify-scroll__y-thumb');
                 this.yBar.appendChild(this.yThumb);
-                this.yThumb.addEventListener('mousedown', this.downYThumb, false);
+                this.yThumb.addEventListener('pointerdown', this.downYThumb, false);
             }
 
             if (isUpdate) {
@@ -154,7 +154,7 @@ export default class BeautifyScrollBar {
 
                 this.xThumb = createDiv('beautify-scroll__x-thumb');
                 this.xBar.appendChild(this.xThumb);
-                this.xThumb.addEventListener('mousedown', this.downXThumb, false);
+                this.xThumb.addEventListener('pointerdown', this.downXThumb, false);
             }
             
             if (isUpdate) {
@@ -196,8 +196,8 @@ export default class BeautifyScrollBar {
             this.element.addEventListener('mousewheel', this.wheelEventHandler, false);
         }
 
-        this.element.addEventListener('mouseenter', this.handleMouseEnter, false);
-        this.element.addEventListener('mouseleave', this.handleMouseLeave, false);
+        this.element.addEventListener('pointerenter', this.handleMouseEnter, false);
+        this.element.addEventListener('pointerleave', this.handleMouseLeave, false);
     }
 
     _handleScrollDiff () {
@@ -295,8 +295,8 @@ export default class BeautifyScrollBar {
             this.yThumb && addClass(this.yThumb, 'focus');
         }
         this.dragDirect = direct;
-        this.ownerDocument.addEventListener('mousemove', this.docMouseMoveHandler, false);
-        this.ownerDocument.addEventListener('mouseup', this.docMouseUpHandler, false);
+        this.ownerDocument.addEventListener('pointermove', this.docMouseMoveHandler, false);
+        this.ownerDocument.addEventListener('pointerdown', this.docMouseUpHandler, false);
     }
 
     _wheelEventHandler (e) {
@@ -363,12 +363,12 @@ export default class BeautifyScrollBar {
     }
 
     _unbindEvent () {
-        this.element.removeEventListener('mouseenter', this.handleMouseEnter, false);
-        this.element.removeEventListener('mouseleave', this.handleMouseLeave, false);
+        this.element.removeEventListener('pointerenter', this.handleMouseEnter, false);
+        this.element.removeEventListener('pointerleave', this.handleMouseLeave, false);
         this.element.removeEventListener('wheel', this.wheelEventHandler, false);
         this.element.removeEventListener('mousewheel', this.wheelEventHandler, false);
-        this.xThumb && this.xThumb.removeEventListener('mousedown', this.downXThumb, false);
-        this.yThumb && this.yThumb.removeEventListener('mousedown', this.downYThumb, false);
+        this.xThumb && this.xThumb.removeEventListener('pointerdown', this.downXThumb, false);
+        this.yThumb && this.yThumb.removeEventListener('pointerdown', this.downYThumb, false);
     }
 
     _updateScrollValue (topDiff, leftDiff) {
