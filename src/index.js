@@ -196,8 +196,8 @@ export default class BeautifyScrollBar {
             this.element.addEventListener('mousewheel', this.wheelEventHandler, false);
         }
 
-        this.element.addEventListener('pointerenter', this.handleMouseEnter, false);
-        this.element.addEventListener('pointerleave', this.handleMouseLeave, false);
+        this.element.addEventListener('touchenter', this.handleMouseEnter, false);
+        this.element.addEventListener('touchleave', this.handleMouseLeave, false);
     }
 
     _handleScrollDiff () {
@@ -274,8 +274,8 @@ export default class BeautifyScrollBar {
             this.yThumb && removeClass(this.yThumb, 'focus');
         }
 
-        this.ownerDocument.removeEventListener('mousemove', this.docMouseMoveHandler);
-        this.ownerDocument.removeEventListener('mouseup', this.docMouseUpHandler);
+        this.ownerDocument.removeEventListener('pointerdown', this.docMouseMoveHandler);
+        this.ownerDocument.removeEventListener('pointerup', this.docMouseUpHandler);
     }
 
     _mouseDownHandler (direct, e) {
@@ -295,7 +295,7 @@ export default class BeautifyScrollBar {
             this.yThumb && addClass(this.yThumb, 'focus');
         }
         this.dragDirect = direct;
-        this.ownerDocument.addEventListener('pointermove', this.docMouseMoveHandler, false);
+        this.ownerDocument.addEventListener('touchmove', this.docMouseMoveHandler, false);
         this.ownerDocument.addEventListener('pointerdown', this.docMouseUpHandler, false);
     }
 
@@ -363,8 +363,8 @@ export default class BeautifyScrollBar {
     }
 
     _unbindEvent () {
-        this.element.removeEventListener('pointerenter', this.handleMouseEnter, false);
-        this.element.removeEventListener('pointerleave', this.handleMouseLeave, false);
+        this.element.removeEventListener('touchenter', this.handleMouseEnter, false);
+        this.element.removeEventListener('touchleave', this.handleMouseLeave, false);
         this.element.removeEventListener('wheel', this.wheelEventHandler, false);
         this.element.removeEventListener('mousewheel', this.wheelEventHandler, false);
         this.xThumb && this.xThumb.removeEventListener('pointerdown', this.downXThumb, false);
